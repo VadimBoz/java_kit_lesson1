@@ -125,7 +125,7 @@ public class ServerWindow extends JFrame {
         if (!connectedUser.contains(user) && allUser.contains(user)) {
             connectedUser.add(user);
             clientWindows.add(clientWindow);
-            textArea.append("connecting" + user.getName()+ "\n");
+            textArea.append("connecting " + user.getName()+ "\n");
         } else if (connectedUser.contains(user)) {
             textArea.append("connecting with " + user.getName() + " already established\n");
         } else  {
