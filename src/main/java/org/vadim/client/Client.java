@@ -2,21 +2,30 @@ package org.vadim.client;
 
 import java.util.Objects;
 
-public class User {
+public class Client {
     private String name;
     private int id;
     private String password;
     private String ip;
     private static int lastID = 1000;
 
-    public User(String name, String password, String ip) {
+    public Client() {
+        this.name = "Jon Doe";
+        this.password = "password";
+        this.ip = "127.0.0.1";
+        this.id = ++lastID;
+
+
+    }
+
+    public Client(String name, String password, String ip) {
         this.name = name;
         this.password = password;
         this.ip = ip;
         this.id = ++lastID;
     }
 
-    public User(String name, String password, String ip, int id) {
+    public Client(String name, String password, String ip, int id) {
         this.name = name;
         this.password = password;
         this.ip = ip;
@@ -61,8 +70,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(ip, user.ip);
+        Client client = (Client) o;
+        return id == client.id && Objects.equals(name, client.name) && Objects.equals(password, client.password) && Objects.equals(ip, client.ip);
     }
 
     @Override

@@ -1,12 +1,16 @@
 package org.vadim;
 
-import org.vadim.client.ClientWindow;
-import org.vadim.server.ServerWindow;
+import org.vadim.client.ClientController;
+import org.vadim.client.ClientGUI;
+import org.vadim.server.ServerController;
+import org.vadim.server.ServerGUI;
+import org.vadim.server.ServerView;
 
 public class Main {
     public static void main(String[] args) {
-        ServerWindow server = ServerWindow.startServer();
-        new ClientWindow(server);
-        new ClientWindow(server);
+        ServerController server = ServerController.start();
+
+        new ClientGUI(server);
+        new ClientGUI(server);
     }
 }
