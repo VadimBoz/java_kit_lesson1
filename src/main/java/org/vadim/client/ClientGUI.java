@@ -19,9 +19,8 @@ public class ClientGUI extends JFrame implements ClientView {
     private final TextField clientIdTextField;
     private final JPasswordField clientPassTextField;
     private final JTextField messageTextField;
-    private ClientController clientController;
-    private JPanel authorizationPanel;
-
+    private final ClientController clientController;
+    private final JPanel authorizationPanel;
     private ServerController serverController;
 
 
@@ -131,9 +130,8 @@ public class ClientGUI extends JFrame implements ClientView {
     @Override
     public void sendMessageToServer() {
         String txt = messageTextField.getText();
-        if(serverController.isServerWorking() && (txt != null && !txt.equals("")) ) {
-//            textArea.append(client.getName()+ ": "+ txt + "\n");
-            serverController.sendMessageToClients(client.getName()+ ": "+ txt + "\n");
+        if(clientController.isConnectingToServer() && (txt != null && !txt.equals("")) ) {
+            clientController.sendMessageToServer(client.getName()+ ": "+ txt + "\n");
             messageTextField.setText("");
         }
     }
@@ -147,7 +145,7 @@ public class ClientGUI extends JFrame implements ClientView {
 
     @Override
     public void disconnectFromServer()  {
-        if (serverController.isServerWorking()) {
+        if (clientController.isConnectingToServer()) {
             textArea.append(client.getName() + " is disconnecting from server \n");
             clientController.disconnectClient();
             authorizationPanel.setVisible(true);

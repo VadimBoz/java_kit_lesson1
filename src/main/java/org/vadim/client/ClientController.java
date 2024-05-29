@@ -24,11 +24,6 @@ public class ClientController {
     }
 
 
-    public void sendMessageToGUI(String txt) {
-        clientView.showMessage(txt);
-    }
-
-
 
     public boolean connectToServer(Client curclient) {
         if (serverController.isServerWorking()) {
@@ -44,7 +39,6 @@ public class ClientController {
 
 
     public void disconnectClient() {
-//        serverController.disconnectClient(clientView, client);
         connectingToServer = false;
     }
 
@@ -56,6 +50,7 @@ public class ClientController {
         return this.client;
     }
 
-
-
+    public boolean isConnectingToServer() {
+        return connectingToServer;
+    }
 }
